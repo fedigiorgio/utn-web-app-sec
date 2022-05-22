@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sitio</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <h2>Bienvenidos</h2><br>
+    <div class="login">
+        <form id="login" method="get" action="login.php">
+            <label><b>Nombre     
+        </b>    
+        </label>
+            <input type="text" name="Uname" id="Uname" placeholder="Nombre">
+            <br><br>
+            <label><b>Contraseña     
+        </b>
+        </label>
+            <input type="Password" name="Pass" id="Pass" placeholder="Contraseña">
+            <br><br>
+            <input type="button" name="log" id="log" onclick="logueo(); false;" value="Iniciar sesión">
+            <br><br>
+        </form>
+    </div>
+    <script src="controller.js">
+    </script>
+</body>
+
+</html>

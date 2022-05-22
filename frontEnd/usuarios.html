@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sitio</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        
+        th,
+        td {
+            padding: 10px 20px;
+            border: 1px solid #000;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        li {
+            float: left;
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        
+        .active {
+            background-color: #04AA6D;
+        }
+    </style>
+</head>
+
+<body onload="crearTablaUsuarios();">
+    <ul>
+        <li><a class="active" href="file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/mainPage.html">Inicio</a></li>
+        <li><a href="file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/usuarios.html">Usuarios</a></li>
+        <li><a href="file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/login.html">Cerrar Sesión</a></li>
+    </ul>
+    <h2>usuarios</h2><br>
+    <div class="">
+        <table border="2">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Tour</th>
+                    <th scope="col">Day</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+    </div>
+    <script src="usuarios.js">
+    </script>
+</body>
+
+</html>
