@@ -1,0 +1,5 @@
+Se puede levantar desde el VSCode, en 
+Run/ Run whitout debugging 
+
+luego se puede navegar con todos los datos falsos. 
+Se debe ver los comentarios en el codigo para adaptarlo y poder usar con la API. 
