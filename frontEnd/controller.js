@@ -3,13 +3,13 @@ let user = { username: "", fullname: "", mail: "" };
 
 function logueo() {
     //comentar cuando se vaya a usar la app
-    window.location.replace("file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/mainPage.html");
-    user = { username: "jorgemtnz", fullname: "jorge", mail: "jorge@msn.com" };
+    //window.location.replace("file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/mainPage.html");
+    //user = { username: "jorgemtnz", fullname: "jorge", mail: "jorge@msn.com" };
     //descomentar cuando se este usando la app
-    /*
+    
     $.ajax({
-        url: "../users/login,
-        type: "GET",
+        url: "http://localhost:8080/users/login",
+        type: "POST",
         dataType: "html",
         cache: false,
         success: function (response) {
@@ -19,7 +19,6 @@ function logueo() {
            alert(thrownError);
         }
     });
-    */
 }
 
 function cargarUsuario() {
