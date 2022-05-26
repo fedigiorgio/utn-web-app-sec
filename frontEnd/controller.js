@@ -6,7 +6,7 @@ function logueo() {
     //window.location.replace("file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/mainPage.html");
     //user = { username: "jorgemtnz", fullname: "jorge", mail: "jorge@msn.com" };
     //descomentar cuando se este usando la app
-    
+
     $.ajax({
         url: "http://localhost:8080/users/login",
         type: "POST",
@@ -19,38 +19,46 @@ function logueo() {
         success: function(response) {
             token = response;
             console.log(response);
+            window.location.replace("/frontEnd/mainPage.html");
+            user.username = $('#Uname').val();
         },
         error: function(xhr, ajaxOptions, thrownError) {
-            alert(thrownError);
+            alert(xhr);
         }
     });
 }
 
 
 function cargarUsuario() {
-    document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + user.fullname;
+    document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + user.username;
 }
 
 function crearTablaUsuarios() {
     //comentar cuando se use la app
-    const data = [{ username: 'fdigiorgio', fullname: 'Francisco Di Giorgio', mail: 'fdigiorgio@frba.utn.edu.ar' }, { username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com' }];
+    let data = [];
+    //data = [{ username: 'fdigiorgio', fullname: 'Francisco Di Giorgio', mail: 'fdigiorgio@frba.utn.edu.ar', password: 'p123' }, { username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com', password: 'p123' }];
 
     //descomentar cuando se use la app
-    /**
-     $.ajax({
-         //definir la url correcta
+
+    $.ajax({
+        //definir la url correcta
         url: "../users?token=" + JSON.stringify(token),
         type: "GET",
         dataType: "html",
-        cache: false,
-        success: function (response ) {            
-            data = response;
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": 'Bearer ' + token
         },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError);
+        data: JSON.stringify({ "token": token }),
+        cache: false,
+        success: function(response) {
+            data = response;
+            console.log("datos recibidos");
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(xhr);
         }
     });
-     */
 
     const tableData = data.map(function(value) {
         return (
