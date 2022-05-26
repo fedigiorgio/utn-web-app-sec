@@ -6,20 +6,21 @@ function logueo() {
     window.location.replace("file:///C:/Users/Jorge_Martinez/Documents/TPSegWeb/LoginForm/mainPage.html");
     user = { username: "jorgemtnz", fullname: "jorge", mail: "jorge@msn.com" };
     //descomentar cuando se este usando la app
-    /*
+
     $.ajax({
-        url: "../users/login,
-        type: "GET",
+        url: "../users/login",
+        type: "Post",
         dataType: "html",
+        data: JSON.stringify({ "user": $('#Uname').val(), "pass": $('#Pass').val() }),
         cache: false,
-        success: function (response) {
-           token = response;
+        success: function(response) {
+            token = response;
         },
-        error: function (xhr, ajaxOptions, thrownError) {
-           alert(thrownError);
+        error: function(xhr, ajaxOptions, thrownError) {
+            alert(thrownError);
         }
     });
-    */
+
 }
 
 function cargarUsuario() {
