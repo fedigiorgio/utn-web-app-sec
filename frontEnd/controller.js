@@ -1,5 +1,8 @@
 let token = "";
 let user = { username: "", fullname: "", mail: "" };
+const storage = window.localStorage;
+const host = "http://localhost:8080";
+const tokenKey = "utn-web-app-sec-token";
 
 function logueo() {
     //comentar cuando se vaya a usar la app
@@ -8,7 +11,7 @@ function logueo() {
     //descomentar cuando se este usando la app
 
     $.ajax({
-        url: "http://localhost:8080/users/login",
+        url: `${host}/users/login`,
         type: "POST",
         dataType: "html",
         headers: {
@@ -16,13 +19,12 @@ function logueo() {
         },
         data: JSON.stringify({ "userName": $('#Uname').val(), "password": $('#Pass').val() }),
         cache: false,
-        success: function(response) {
-            token = response;
-            console.log(response);
-            window.location.replace("/frontEnd/mainPage.html");
+        success: function (response) {
+            storage.setItem(tokenKey, JSON.parse(response).token);
+            window.location.replace("./mainPage.html");
             user.username = $('#Uname').val();
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr);
         }
     });
@@ -39,32 +41,29 @@ function crearTablaUsuarios() {
     //data = [{ username: 'fdigiorgio', fullname: 'Francisco Di Giorgio', mail: 'fdigiorgio@frba.utn.edu.ar', password: 'p123' }, { username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com', password: 'p123' }];
 
     //descomentar cuando se use la app
-
+    JSON.stringify(token)
     $.ajax({
-        //definir la url correcta
-        url: "../users?token=" + JSON.stringify(token),
+        url: `${host}/users`,
         type: "GET",
+        async: false,
         dataType: "html",
         headers: {
-            "Content-Type": "application/json",
-            "Authorization": 'Bearer ' + token
+            "token": storage.getItem(tokenKey)
         },
-        data: JSON.stringify({ "token": token }),
         cache: false,
-        success: function(response) {
-            data = response;
-            console.log("datos recibidos");
+        success: function (response) {
+            data = JSON.parse(response);
         },
-        error: function(xhr, ajaxOptions, thrownError) {
+        error: function (xhr, ajaxOptions, thrownError) {
             alert(xhr);
         }
     });
 
-    const tableData = data.map(function(value) {
+    const tableData = data.map(function (value) {
         return (
             `<tr>
                     <td>${value.username}</td>
-                    <td>${value.fullname}</td>
+                    <td>${value.fullName}</td>
                     <td>${value.mail}</td>
                 </tr>`
         );
