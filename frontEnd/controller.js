@@ -43,7 +43,7 @@ function buscarUsuario(){
     //descomentar cuando se use la app
     JSON.stringify(token)
     $.ajax({
-        url: `${host}/users`,
+        url: `${host}/user`, //?parametros=" + JSON.stringify({ "nombre": $('#btnBuscar').val() }),
         type: "GET",
         async: false,
         dataType: "html",
