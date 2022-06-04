@@ -47,12 +47,12 @@
     </style>
 </head>
 
-<body onload="validarSesion(); crearTablaUsuarios(); ">
+<body onload="validarSesion(); buscarUsuarios(); ">
     <ul>
         <!-- modificar por lo links reales -->
-        <li><a class="active " href="./index.html ">Inicio</a></li>
-        <li><a href="./usuarios.html ">Usuarios</a></li>
-        <li><a href="./login.html ">Cerrar Sesión</a></li>
+        <li><a href="./index.html ">Inicio</a></li>
+        <li><a class="active" href="./usuarios.html ">Usuarios</a></li>
+        <li><a href="./login.html " onclick="return cerrarSesion();">Cerrar Sesión</a></li>
     </ul>
     <h2>Usuarios</h2><br>
     <div>
