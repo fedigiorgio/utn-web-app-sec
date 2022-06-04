@@ -35,11 +35,11 @@
     </style>
 </head>
 
-<body onload="cargarUsuario();">
+<body onload="validarSesion(); cargarUsuario();">
     <ul>
         <li><a class="active" href="#home">Inicio</a></li>
         <li><a href="./usuarios.html">Usuarios</a></li>
-        <li><a href="./login.html">Cerrar Sesión</a></li>
+        <li><a href="./login.html" onclick="return cerrarSesion();">Cerrar Sesión</a></li>
     </ul>
     <h2 id="lblBienvenido">Bienvenido</h2>
     <br>

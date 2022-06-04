@@ -3,6 +3,7 @@ let user = { username: "", fullname: "", mail: "" };
 const storage = window.localStorage;
 const host = "http://localhost:8080";
 const tokenKey = "utn-web-app-sec-token";
+const userKey = "usuario";
 
 function logueo() {
     //comentar cuando se vaya a usar la app
@@ -19,12 +20,12 @@ function logueo() {
         },
         data: JSON.stringify({ "userName": $('#Uname').val(), "password": $('#Pass').val() }),
         cache: false,
-        success: function (response) {
+        success: function(response) {
             storage.setItem(tokenKey, JSON.parse(response).token);
-            window.location.replace("./mainPage.html");
-            user.username = $('#Uname').val();
+            storage.setItem(userKey, $('#Uname').val());
+            window.location.replace("./index.html");
         },
-        error: function () {			
+        error: function() {
             alert("Error al loguearse");
         }
     });
@@ -32,11 +33,11 @@ function logueo() {
 
 
 function cargarUsuario() {
-    document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + user.username;
+    document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + storage.getItem(userKey);
 }
 
-function buscarUsuario(){
-	 //comentar cuando se use la app
+function buscarUsuario() {
+    //comentar cuando se use la app
     let data = [];
     //data = [{ username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com' }];
 
@@ -53,15 +54,15 @@ function buscarUsuario(){
             "token": storage.getItem(tokenKey)
         },
         cache: false,
-        success: function (response) {
+        success: function(response) {
             data = JSON.parse(response);
         },
-        error: function () {
+        error: function() {
             alert("Error al buscar usuarios");
         }
     });
 
-    const tableData = data.map(function (value) {
+    const tableData = data.map(function(value) {
         return (
             `<tr>
                     <td>${value.username}</td>
@@ -72,7 +73,7 @@ function buscarUsuario(){
     }).join('');
     const tableBody = document.querySelector("#tableBody");
     tableBody.innerHTML = tableData;
-	
+
 }
 
 function crearTablaUsuarios() {
@@ -91,15 +92,15 @@ function crearTablaUsuarios() {
             "token": storage.getItem(tokenKey)
         },
         cache: false,
-        success: function (response) {
+        success: function(response) {
             data = JSON.parse(response);
         },
-        error: function () {
+        error: function() {
             alert("Error al buscar usuarios");
         }
     });
 
-    const tableData = data.map(function (value) {
+    const tableData = data.map(function(value) {
         return (
             `<tr>
                     <td>${value.username}</td>
@@ -111,4 +112,14 @@ function crearTablaUsuarios() {
     const tableBody = document.querySelector("#tableBody");
     tableBody.innerHTML = tableData;
 
+}
+
+function cerrarSesion() {
+    alert("Adios");
+    // return true or false, depending on whether you want to allow the `href` property to follow through or not
+}
+
+function validarSesion() {
+    alert("sesion valida");
+    // return true or false, depending on whether you want to allow the `href` property to follow through or not
 }
