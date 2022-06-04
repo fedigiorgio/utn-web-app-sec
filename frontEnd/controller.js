@@ -41,13 +41,14 @@ function buscarUsuario(){
     //data = [{ username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com' }];
 
     //descomentar cuando se use la app
+
+    const url = `${host}/users?fullName=${$('#Uname').val()}`
     JSON.stringify(token)
     $.ajax({
-        url: `${host}/user`, //?parametros=" + JSON.stringify({ "nombre": $('#btnBuscar').val() }),
+        url: url,
         type: "GET",
         async: false,
         dataType: "html",
-		data: JSON.stringify({ "nombre": $('#btnBuscar').val() }),
         headers: {
             "token": storage.getItem(tokenKey)
         },
@@ -82,7 +83,7 @@ function crearTablaUsuarios() {
     //descomentar cuando se use la app
     JSON.stringify(token)
     $.ajax({
-        url: `${host}/users`,
+        url: `${host}/users?fullName`,
         type: "GET",
         async: false,
         dataType: "html",
