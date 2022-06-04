@@ -24,8 +24,8 @@ function logueo() {
             window.location.replace("./mainPage.html");
             user.username = $('#Uname').val();
         },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr);
+        error: function () {			
+            alert("Error al loguearse");
         }
     });
 }
@@ -35,10 +35,49 @@ function cargarUsuario() {
     document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + user.username;
 }
 
+function buscarUsuario(){
+	 //comentar cuando se use la app
+    let data = [];
+    //data = [{ username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com' }];
+
+    //descomentar cuando se use la app
+    JSON.stringify(token)
+    $.ajax({
+        url: `${host}/user`, //?parametros=" + JSON.stringify({ "nombre": $('#btnBuscar').val() }),
+        type: "GET",
+        async: false,
+        dataType: "html",
+		data: JSON.stringify({ "nombre": $('#btnBuscar').val() }),
+        headers: {
+            "token": storage.getItem(tokenKey)
+        },
+        cache: false,
+        success: function (response) {
+            data = JSON.parse(response);
+        },
+        error: function () {
+            alert("Error al buscar usuarios");
+        }
+    });
+
+    const tableData = data.map(function (value) {
+        return (
+            `<tr>
+                    <td>${value.username}</td>
+                    <td>${value.fullName}</td>
+                    <td>${value.mail}</td>
+                </tr>`
+        );
+    }).join('');
+    const tableBody = document.querySelector("#tableBody");
+    tableBody.innerHTML = tableData;
+	
+}
+
 function crearTablaUsuarios() {
     //comentar cuando se use la app
     let data = [];
-    //data = [{ username: 'fdigiorgio', fullname: 'Francisco Di Giorgio', mail: 'fdigiorgio@frba.utn.edu.ar', password: 'p123' }, { username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com', password: 'p123' }];
+    //data = [{ username: 'fdigiorgio', fullname: 'Francisco Di Giorgio', mail: 'fdigiorgio@frba.utn.edu.ar' }, { username: 'jorgemtnz', fullname: 'jorge martinez', mail: 'jorgeemtnz@gmail.com' }];
 
     //descomentar cuando se use la app
     JSON.stringify(token)
@@ -54,8 +93,8 @@ function crearTablaUsuarios() {
         success: function (response) {
             data = JSON.parse(response);
         },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(xhr);
+        error: function () {
+            alert("Error al buscar usuarios");
         }
     });
 
