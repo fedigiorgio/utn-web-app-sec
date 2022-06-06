@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Boveda Web</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        
+        li {
+            float: left;
+        }
+        
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+        
+        .active {
+            background-color: #04AA6D;
+        }
+    </style>
+</head>
+
+<body onload="validarSesion(); cargarUsuario();">
+    <ul>
+        <li><a class="active" href="#home">Inicio</a></li>
+        <li><a href="./usuarios.html">Usuarios</a></li>
+        <li><a href="./login.html" onclick="return cerrarSesion();">Cerrar Sesión</a></li>
+    </ul>
+    <h2 id="lblBienvenido">Bienvenido</h2>
+    <br>
+    <div class="" style="text-align: center;">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus et eaque quaerat explicabo illum fugiat laudantium ipsa porro. Odit atque expedita sunt incidunt tempora alias nostrum veritatis quos perspiciatis ut.
+        </p>
+
+
+    </div>
+    <script src="controller.js">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
