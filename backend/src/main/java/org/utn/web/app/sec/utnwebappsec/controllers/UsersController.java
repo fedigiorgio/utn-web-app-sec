@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/users")
 public class UsersController {
 
-    private String CONNECTION_URL = "jdbc:sqlserver://seguridadweb.database.windows.net:1433;database=seguridadWebDB;user=dba@seguridadweb;password=Ninguno123!;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+    private String CONNECTION_URL = "override_locally";
 
     @RequestMapping(method = RequestMethod.GET)
     public List<UserDto> getAll(@RequestParam String fullName, @RequestHeader("token") String token) throws NotAuthorizedException {
