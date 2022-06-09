@@ -7,29 +7,29 @@ const userKey = "usuario";
 
 function logueo() {
     //comentar cuando se vaya a usar la app, es solo para usar sin base de datos
-    storage.setItem(tokenKey, "fgdfhbdgsjgcsjsnmmsrkk");
-    storage.setItem(userKey, $('#Uname').val());
-    window.location.replace("./index.html");
+    // storage.setItem(tokenKey, "fgdfhbdgsjgcsjsnmmsrkk");
+    // storage.setItem(userKey, $('#Uname').val());
+    // window.location.replace("./index.html");
 
     //descomentar cuando se este usando la app
-    // $.ajax({
-    //     url: `${host}/users/login`,
-    //     type: "POST",
-    //     dataType: "html",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     data: JSON.stringify({ "userName": $('#Uname').val(), "password": $('#Pass').val() }),
-    //     cache: false,
-    //     success: function(response) {
-    //         storage.setItem(tokenKey, JSON.parse(response).token);
-    //         storage.setItem(userKey, $('#Uname').val());
-    //         window.location.replace("./index.html");
-    //     },
-    //     error: function() {
-    //         alert("Error al loguearse");
-    //     }
-    // });
+    $.ajax({
+        url: `${host}/users/login`,
+        type: "POST",
+        dataType: "html",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        data: JSON.stringify({ "userName": $('#Uname').val(), "password": $('#Pass').val() }),
+        cache: false,
+        success: function(response) {
+            storage.setItem(tokenKey, JSON.parse(response).token);
+            storage.setItem(userKey, $('#Uname').val());
+            window.location.replace("./index.html");
+        },
+        error: function() {
+            alert("Error al loguearse");
+        }
+    });
 }
 
 
