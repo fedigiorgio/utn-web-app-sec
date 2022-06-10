@@ -3,3 +3,5 @@ Run/ Run whitout debugging
 
 luego se puede navegar con todos los datos falsos. 
 Se debe ver los comentarios en el codigo para adaptarlo y poder usar con la API. 
+
+Esta es la versión con bootstrap, con la que se probó ok el 9/6/22
