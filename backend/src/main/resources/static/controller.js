@@ -27,7 +27,7 @@ function logueo() {
             window.location.replace("./index.html");
         },
         error: function() {
-            alert("Error al loguearse");
+            alert("Error contraseña inválida");
         }
     });
 }
