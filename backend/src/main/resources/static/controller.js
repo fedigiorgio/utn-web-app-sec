@@ -27,14 +27,16 @@ function logueo() {
             window.location.replace("./index.html");
         },
         error: function() {
-            alert("Error contrase&ntilde;a inv&aacute;lida.");
+            alert("Error contrase\xF1a inv\xE1lida.");
         }
     });
 }
 
 
 function cargarUsuario() {
-    document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + storage.getItem(userKey);
+    document.getElementById("lblBienvenido").innerHTML = "Bienvenido " + userKey;
+    let nombre = storage.getItem(userKey);
+    alert(nombre);
 }
 
 function crearTabla(data) {
@@ -98,6 +100,11 @@ function cerrarSesion() {
 function validarSesion() {
     let usuario = storage.getItem(userKey);
     let token = storage.getItem(tokenKey);
+
+    if (usuario == "admin") {
+        document.getElementById("OpcionUsuarios").style.visibility = 'visible';
+    }
+
 
     if (usuario == null || token == null) {
         alert("sesion Invalida");

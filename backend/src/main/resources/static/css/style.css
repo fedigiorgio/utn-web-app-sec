@@ -1,7 +1,7 @@
   body {
       margin: 0;
       padding: 0;
-      background-color: #6abadeba;
+      background-color: #6abadeba !important;
       font-family: 'Arial';
   }
   
@@ -43,7 +43,7 @@
   }
   
   #log {
-      width: 300px;
+      width: 100%;
       height: 30px;
       border: none;
       border-radius: 17px;
